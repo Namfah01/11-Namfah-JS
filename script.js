@@ -3,6 +3,9 @@ const productForm = document.getElementById('productForm');
 const productDashboard = document.getElementById('productDashboard');
 const cart = [];
 const addToCartBtn = document.getElementById('addToCartBtn');
+const calculatePriceBtn = document.getElementById('calculatePriceBtn');
+const totalPrice = document.getElementById('totalPrice')
+
 
 
 //Create Product section
@@ -69,10 +72,20 @@ function displayCart() {
     });
 }
 
+//remove form cart
 function removeFromCart(index) {   //ลบสินค้าโดยลบแค่index ของสินค้าที่เลือกเพียงชิ้นเดียว
     cart.splice(index, 1);
     displayCart(); //อัปเดตการแสดงผล
 }
+
+//calculatePrice
+calculatePriceBtn.addEventListener('click', function () {        //เมื่อคลิกปุ้ม functionจะถูกเรียกใช้
+    const total = cart.reduce((sum, product) => sum + product.price, 0);      //คำนวนราคาสินค้าที่ปรากฎใน array ของ cart  กำหนดค่าเริ่มต้นของ sum เป็น 0 เมื่อเพิ่มสินค้าในตระกร้า จะนำราคาใหม่มาคำนวนกับsum ที่คงเหลือก่อนหน้า
+    alert(` ท่านได้ชำระเงินเป็นจำนวน  ${total.toFixed(2)} บาท`) ;     //แสดงประโยคที่กำหนดและราคาพร้อมทศนิยม 2 ตำแหน่งใน alert box
+    const totalPriceElement = document.getElementById('totalPrice');
+    totalPriceElement.textContent = `Total Price: ${total.toFixed(2)}฿`; //แสดงราคาพร้อมทศนิยม 2 ตำแหน่งในtotalPriceElemnet แทนที่ pay now เป็น totalprice
+});
+
 
 
 
