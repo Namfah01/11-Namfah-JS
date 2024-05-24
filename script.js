@@ -31,13 +31,13 @@ productForm.addEventListener('submit', function (event) {
 function addProductToDashboard(product) {
     const productElement = document.createElement('div');           //สร้างelementใหม่ซึ่งก็คือ div ที่ภายในมี checkbox ที่แสดงผลproduct name,price ในรูปแบบของspan พร้อมทั้งกำหนดขนาดของภาพ
     productElement.innerHTML = `
-        <input type="checkbox" class="productSelect">
-        <span>${product.name}</span>
-        <span>฿${product.price}</span>
-        <img src="${product.image}" width="100" height="100">
-    `;
-	productElement.className = 'font-sans font-semibold text-[18px]';
-    productDashboard.appendChild(productElement);       //ให้แสดงผลภายใน productDashborad
+    <input type="checkbox" class="productSelect">
+    <h1 class="flex text-[20px] justify-center text-pink-500">${product.name}</h1>
+    <h2 class="flex text-[18px] text-blue-400 justify-center">฿${product.price}</h2>
+    <img src="${product.image}" width="100" height="100" w-full class="flex justify-center pt-2" >
+`;
+	productElement.className = 'font-sans font-semibold text-[16px] flex-col bg-white border border-pink p-8 flex ';
+    productDashboard.appendChild(productElement);      //ให้แสดงผลภายใน productDashborad
 }
 
 //add to cart
@@ -60,15 +60,17 @@ function displayCart() {
     cart.forEach((product, index)=> {      //วนลูปเพื่อแสดงproductที่ถูกเลือกใน cart แต่ละครั้ง
         const productElement = document.createElement('div');
         productElement.innerHTML = `
-            ${product.name}  ฿${product.price} <img src="${product.image}" width="100" height="100">
-            <i class="fa-solid fa-trash fa-lg absolute right-[-22px] bottom-[12px]" style="color: #f03838;"></i> `; //กำหนดค่าให้ไอคอนอยู่ขอบล่างเพื่อความสวยงาม
+        <h1 class="flex text-[20px] justify-center text-pink-500">${product.name}</h1>
+        <h2 class="flex text-[18px] text-blue-400 justify-center">฿${product.price}</h2>
+        <img src="${product.image}" width="100" height="100" w-full class="flex justify-center pt-2" >
+        <i class="fa-solid fa-trash fa-lg absolute right-[8px] bottom-[18px]" style="color: #f03838;"></i>`; //กำหนดค่าให้ไอคอนอยู่ขอบล่างเพื่อความสวยงาม
             // นำข้อมูลที่ได้มาแสดงผลในรูปแบบของ product cart และเพิ่มไอคอนถังขยะ เพื่อในการลบ product ออกจาก cart
 
-        productElement.className = 'relative font-sans font-semibold text-[18px] ';  //กำหนดรูปแบบตัวอักษร
+        productElement.className = 'relative font-sans font-semibold text-[16px] flex-col bg-white border border-pink p-8 flex';  //กำหนดรูปแบบตัวอักษร
         const removeBtn = productElement.querySelector('.fa-trash'); //ใช้เพื่อเลือกไอคอนถังขยะในการลบสินค้า
-        removeBtn.addEventListener('click', () => removeFromCart(index)); //เมื่อคลิก0tเรียกใช้ฟังก์ชันเพื่อลบสินค้าที่เลือก 
+        removeBtn.addEventListener('click', () => removeFromCart(index)); //เมื่อคลิก0tเรียกใช้ฟังก์ชันเพื่อลบสินค้าที่เลือก
 
-        cartDiv.appendChild(productElement);    //แสดงสินค้า productElement ใน cart 
+        cartDiv.appendChild(productElement);    //แสดงสินค้า productElement ใน cart
     });
 }
 
