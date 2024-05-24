@@ -18,16 +18,13 @@
     <form id="productForm" class="flex justify-around bg-sky-200 p-2">
         <label for="productName" class="justify-center font-semibold font-serif m-4">Product Name:</label>
         <input type="text" id="productName" required class="bg-pink-100 border-2 border-white rounded-xl text-center">
-        <br>
-        
-        <label for="productPrice" class="justify-center font-semibold font-serif m-4" >Price:</label>
-        <input type="text" id="productPrice" required class="bg-pink-100 border-2 border-white rounded-xl text-center">
-        <br>
-        
+
+        <label for="productPrice" class="justify-center font-semibold font-serif m-4">Price:</label>
+        <input type="number" id="productPrice" required min="1" class="bg-pink-100 border-2 border-white rounded-xl text-center">
+
         <label for="productImage" class="justify-center font-semibold font-serif m-4">Image URL:</label>
         <input type="text" id="productImage" required class="bg-pink-100 border-2 border-white rounded-xl text-center">
-        <br>
-        
+
         <button type="submit" class="justify-center font-semibold font-serif bg-pink-300 rounded-2xl border-2 border-orange-300 p-4 ">Create Product</button>
     </form>
     </Section>

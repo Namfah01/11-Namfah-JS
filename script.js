@@ -23,7 +23,7 @@ productForm.addEventListener('submit', function (event) {
 		document.getElementById('productPrice').value = '';
 		document.getElementById('productImage').value = '';    //ใส่เพื่อให้หลังจากป้อนinput และ create product เสร็จแล้ว ให้ช่องทั้งสามกลับมาแสดงผลว่างอีกครั้ง
     } else {
-        alert('Invalid input');  //มีป้ายประกาศแจ้งให้ใส่ข้อมูล input
+        alert('กรุณาใส่ข้อมูล');  //มีป้ายประกาศแจ้งให้ใส่ข้อมูล input
     }
 });
 
@@ -35,7 +35,7 @@ function addProductToDashboard(product) {
     <h1 class="flex text-[20px] justify-center text-pink-500">${product.name}</h1>
     <h2 class="flex text-[18px] text-blue-400 justify-center">฿${product.price}</h2>
     <img src="${product.image}" width="100" height="100" w-full class="flex justify-center pt-2" >
-`;
+`;      //ตกแต่งproductCard ใน productDashborad เพื่อความสวยงาม
 	productElement.className = 'font-sans font-semibold text-[16px] flex-col bg-white border border-pink p-8 flex ';
     productDashboard.appendChild(productElement);      //ให้แสดงผลภายใน productDashborad
 }
@@ -63,7 +63,7 @@ function displayCart() {
         <h1 class="flex text-[20px] justify-center text-pink-500">${product.name}</h1>
         <h2 class="flex text-[18px] text-blue-400 justify-center">฿${product.price}</h2>
         <img src="${product.image}" width="100" height="100" w-full class="flex justify-center pt-2" >
-        <i class="fa-solid fa-trash fa-lg absolute right-[8px] bottom-[18px]" style="color: #f03838;"></i>`; //กำหนดค่าให้ไอคอนอยู่ขอบล่างเพื่อความสวยงาม
+        <i class="fa-solid fa-trash fa-lg absolute right-[8px] bottom-[18px]" style="color: #f03838;"></i>`; //ตกแต่งproductCard ใน productDashborad และกำหนดค่าให้ไอคอนอยู่ขอบล่างเพื่อความสวยงาม
             // นำข้อมูลที่ได้มาแสดงผลในรูปแบบของ product cart และเพิ่มไอคอนถังขยะ เพื่อในการลบ product ออกจาก cart
 
         productElement.className = 'relative font-sans font-semibold text-[16px] flex-col bg-white border border-pink p-8 flex';  //กำหนดรูปแบบตัวอักษร
@@ -87,6 +87,7 @@ calculatePriceBtn.addEventListener('click', function () {        //เมื่�
     const totalPriceElement = document.getElementById('totalPrice');
     totalPriceElement.textContent = `Total Price: ${total.toFixed(2)}฿`; //แสดงราคาพร้อมทศนิยม 2 ตำแหน่งในtotalPriceElemnet แทนที่ pay now เป็น totalprice
 });
+
 
 
 
