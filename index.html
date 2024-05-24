@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://kit.fontawesome.com/3da488735e.js" crossorigin="anonymous"></script>
+    <title>Shopping Cart</title>
 </head>
 <body>
-    
+	<Section class ="text-center text-pink-300 bg-yellow-100 font-semibold font-serif p-4 flex justify-center">
+    <div class="flex">
+		<h1 class="text-[32px]">Shopping Cart </h1>
+		<i class="fa-solid fa-cart-shopping fa-2xl m-3 pt-3" style="color:pink-300;"></i>
+	</div>
+	</Section>
+    <Section>
+    <form id="productForm" class="flex justify-around bg-sky-200 p-2">
+        <label for="productName" class="justify-center font-semibold font-serif m-4">Product Name:</label>
+        <input type="text" id="productName" required class="bg-pink-100 border-2 border-white rounded-xl text-center">
+        <br>
+        
+        <label for="productPrice" class="justify-center font-semibold font-serif m-4" >Price:</label>
+        <input type="text" id="productPrice" required class="bg-pink-100 border-2 border-white rounded-xl text-center">
+        <br>
+        
+        <label for="productImage" class="justify-center font-semibold font-serif m-4">Image URL:</label>
+        <input type="text" id="productImage" required class="bg-pink-100 border-2 border-white rounded-xl text-center">
+        <br>
+        
+        <button type="submit" class="justify-center font-semibold font-serif bg-pink-300 rounded-2xl border-2 border-orange-300 p-4 ">Create Product</button>
+    </form>
+    </Section>
+
+    <div id="productDashboard" class="bg-green-100 p-4 m-1 border-y-2 border-pink-200 flex justify-items-start space-x-4">
+	</div>
+
+    <button id="addToCartBtn" class="flex justify-center font-semibold font-serif bg-purple-300 rounded-md border-2 border-orange-300 p-1 m-2">Add to Cart</button>
+	<div>
+		<div id="cart" class="bg-purple-100 p-4 border border-orange-300 flex justify-items-start space-x-10">
+		</div>
+	</div>
+
+	<div class="flex  bg-red-300 justify-center">
+		<button id="calculatePriceBtn" class="flex justify-center font-semibold font-serif bg-yellow-300 rounded-md border-2 border-black p-1 m-2 ">Calculate Final Price</button>
+		<h3 id=totalPrice class="flex py-2 m-2 font-semibold font-serif justify-around"> Pay Now! </h3>
+	</div>
+    <script src="script.js"></script>
 </body>
 </html>
