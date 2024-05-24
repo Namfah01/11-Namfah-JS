@@ -4,6 +4,7 @@ const productDashboard = document.getElementById('productDashboard');
 const cart = [];
 const addToCartBtn = document.getElementById('addToCartBtn');
 
+
 //Create Product section
 productForm.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -43,18 +44,35 @@ addToCartBtn.addEventListener('click', function () {       //เพิ่มeven
     selectedProducts.forEach(productElement => {                 //แสดงproductที่ถูกเลือกในแต่ละครั้ง
         const name = productElement.nextElementSibling.textContent;  //แสดงข้อความในspanของproduct name
         const price = parseFloat(productElement.nextElementSibling.nextElementSibling.textContent.slice(1));  //ดึงราคามาจากspanของราคาสินค้า ฿100 โดยตัด฿ออก เพื่อให้เหลือแต่จำนวนราคาในรูปแบบของ sting จากนั้นใช้ parseFolat แปลงเป็นตัวเลขในรูปแบบทศนิยม และเก็บไว้ในรูปแบบของ price
-        cart.push({ name, price });  //เพิ่ม name , price ของสินค้าแต่ละชิ้นลงใน cart
+        const image = productElement.nextElementSibling.nextElementSibling.nextElementSibling.getAttribute('src');
+        cart.push({ name, price, image });;  //เพิ่ม name , price, image ของสินค้าแต่ละชิ้นลงใน cart
     });
     displayCart();  //เรียกใช้ฟังก์ชั่น
 });
 
-//displayCart กำหนดรูปแบบการแสดงผลproduct ใน class
+//displayCart กำหนดรูปแบบการแสดงผลproduct ใน cart รวมถึงปุ่ม remove product
 function displayCart() {
     const cartDiv = document.getElementById('cart');      //ดึง product element จาก cart มาใส่ใน cartDiv
-    cartDiv.innerHTML = 'Cart: ';  //กำหนดข้อความเริ่มต้นที่แสดงในcartDiv
-    cart.forEach(product => {      //วนลูปเพื่อแสดงproductที่ถูกเลือกใน cart แต่ละครั้ง
-        cartDiv.innerHTML += `${product.name} (฿${product.price}), `;   //นำค่าที่ได้มาแสดงผลในรูปแบบ name ,price(฿100)
+    cartDiv.innerHTML = ' ';  //กำหนดที่ว่างสำหรับแสดงสินค้า
+    cart.forEach((product, index)=> {      //วนลูปเพื่อแสดงproductที่ถูกเลือกใน cart แต่ละครั้ง
+        const productElement = document.createElement('div');
+        productElement.innerHTML = `
+            ${product.name}  ฿${product.price} <img src="${product.image}" width="100" height="100">
+            <i class="fa-solid fa-trash fa-lg absolute right-[-22px] bottom-[12px]" style="color: #f03838;"></i> `; //กำหนดค่าให้ไอคอนอยู่ขอบล่างเพื่อความสวยงาม
+            // นำข้อมูลที่ได้มาแสดงผลในรูปแบบของ product cart และเพิ่มไอคอนถังขยะ เพื่อในการลบ product ออกจาก cart
+
+        productElement.className = 'relative font-sans font-semibold text-[18px] ';  //กำหนดรูปแบบตัวอักษร
+        const removeBtn = productElement.querySelector('.fa-trash'); //ใช้เพื่อเลือกไอคอนถังขยะในการลบสินค้า
+        removeBtn.addEventListener('click', () => removeFromCart(index)); //เมื่อคลิก0tเรียกใช้ฟังก์ชันเพื่อลบสินค้าที่เลือก 
+
+        cartDiv.appendChild(productElement);    //แสดงสินค้า productElement ใน cart 
     });
 }
+
+function removeFromCart(index) {   //ลบสินค้าโดยลบแค่index ของสินค้าที่เลือกเพียงชิ้นเดียว
+    cart.splice(index, 1);
+    displayCart(); //อัปเดตการแสดงผล
+}
+
 
 
