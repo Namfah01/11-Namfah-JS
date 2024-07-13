@@ -1,4 +1,4 @@
-# Mini Project (Shopping # Mini Project (Shopping Cart)
+# Mini Project (Shopping Cart)
 
 Developed a responsive shopping cart application using [JavaScript](https://www.javascript.com/) and [Tailwind CSS](https://tailwindcss.com/).
 
